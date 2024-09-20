@@ -134,31 +134,36 @@ void task7() {
     double a, b, c;
     printf("Enter coefficients a, b, and c: ");
     scanf("%lf %lf %lf", &a, &b, &c);
-    printf("%lf %lf %lf", a, b, c);
 
     double D = b * b - 4 * a * c;
 
-    if (D < 0) {
-        printf("The equation has no real solutions.\n");
-    } else {
-        double y1 = (-b + sqrt(D)) / (2 * a);
-        double y2 = (-b - sqrt(D)) / (2 * a);
-
-        printf("Solutions for y are: y1 = %.2f, y2 = %.2f\n", y1, y2);
-
-        // Повертаємось до x
-        if (y1 >= 0) {
-            printf("x1 = %.2f, x2 = %.2f\n", sqrt(y1), -sqrt(y1));
+    if (a != 0) {
+        if (D < 0) {
+            printf("The equation has no real solutions.\n");
         } else {
-            printf("No real solutions for y1\n");
-        }
+            double y1 = (-b + sqrt(D)) / (2 * a);
+            double y2 = (-b - sqrt(D)) / (2 * a);
 
-        if (y2 >= 0) {
-            printf("x3 = %.2f, x4 = %.2f\n", sqrt(y2), -sqrt(y2));
-        } else {
-            printf("No real solutions for y2\n");
+            printf("Solutions for y are: y1 = %.2f, y2 = %.2f\n", y1, y2);
+
+            // Повертаємось до x
+            if (y1 >= 0) {
+                printf("x1 = %.2f, x2 = %.2f\n", sqrt(y1), -sqrt(y1));
+            } else {
+                printf("No real solutions for y1\n");
+            }
+
+            if (y2 >= 0) {
+                printf("x3 = %.2f, x4 = %.2f\n", sqrt(y2), -sqrt(y2));
+            } else {
+                printf("No real solutions for y2\n");
+            }
         }
     }
+    else {
+      printf("a = 0, so the equation reduces to the linear, and root is = %.2f\n", -1 * c * b);
+    }
+
 }
 
 int main() {
