@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <math.h>
+#define EPS 0.000001
 
 void task1() {
     unsigned num1;
@@ -137,7 +138,7 @@ void task7() {
 
     double D = b * b - 4 * a * c;
 
-    if (a != 0) {
+    if (fabs(a) > EPS) {
         if (D < 0) {
             printf("The equation has no real solutions.\n");
         } else {
@@ -147,13 +148,13 @@ void task7() {
             printf("Solutions for y are: y1 = %.2f, y2 = %.2f\n", y1, y2);
 
             // Повертаємось до x
-            if (y1 >= 0) {
+            if (y1 >= EPS) {
                 printf("x1 = %.2f, x2 = %.2f\n", sqrt(y1), -sqrt(y1));
             } else {
                 printf("No real solutions for y1\n");
             }
 
-            if (y2 >= 0) {
+            if (y2 >= EPS) {
                 printf("x3 = %.2f, x4 = %.2f\n", sqrt(y2), -sqrt(y2));
             } else {
                 printf("No real solutions for y2\n");
