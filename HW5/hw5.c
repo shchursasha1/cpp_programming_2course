@@ -4,10 +4,10 @@
 
 // task 5.12 (b)
 
-double factorial(int n) {
+long long factorial(int n) {
     double result = 1;
 
-    for (int i = 1; i <= n; i++) {
+    for (int i = 2; i <= n; i++) {
         result *= i;
     }
 
@@ -16,8 +16,11 @@ double factorial(int n) {
 
 
 void task12() {
-    double ak_2 = 0, ak_1 = 1, ak, bk_2 = 1, bk_1 = 0, bk, sum = 0, u, v;
     int n;
+    double u, v;
+    double a_k, b_k;
+    double a_prev1, a_prev2, b_prev1, b_prev2;
+    double Sn = 0.0;
 
     printf("Enter n: ");
     scanf("%d", &n);
@@ -26,24 +29,28 @@ void task12() {
     printf("Enter v: ");
     scanf("%lf", &v);
 
-    for (int k = 1; k <= n; k++ ) {
-        if (k == 1) {
-            ak = u;
-            bk = v;
-        } else {
-            ak = 2 * bk_1 + ak_1;
-            bk = 2 * pow(u, 2) + bk_1;
+    a_k = u;
+    b_k = v;
+    a_prev1 = u;
+    b_prev1 = v;
+
+    for (int k = 1; k <= n; k++) {
+        if (k > 1) {
+            a_prev2 = a_prev1;
+            b_prev2 = b_prev1;
+
+            a_k = 2 * b_prev1 + a_prev2;
+            b_k = 2 * a_prev1 * a_prev1 + b_prev2;
+
+            a_prev1 = a_k;
+            b_prev1 = b_k;
         }
 
-        sum += (ak * bk) / factorial(k + 1);
-
-        ak_2 = ak_1;
-        ak_1 = ak;
-        bk_2 = bk_1;
-        bk_1 = bk;
+        Sn += (a_k * b_k) / factorial(k + 1);
     }
 
-    printf("Sum: %lf\n", sum);
+
+    printf("Sum: %lf\n", Sn);
 }
 
 
