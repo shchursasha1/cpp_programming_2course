@@ -147,7 +147,7 @@ bool is_power_of_3(int n) {
     return n == 1;
 }
 
-void task3() {
+int task3() {
     FILE *fileF, *fileG;
     int num;
 
